@@ -47,31 +47,32 @@ const SignUp = () => {
       };
 
   return (
-    <div className="container">
-    <h1 className="title">Register</h1>
+    <div>
+    <h1 className='bg-gray-800 text-3xl py-6 text-white text-center'>Sign Up</h1>
     <div className="error" id="error"></div>
-    <form id="registerForm" onSubmit={handleSubmit}>
-        <div className="form-group">
-        <label htmlFor="name">Name</label>
-        <input className="input" type="text" placeholder="Enter name" name="name" id="name" onChange={handleChange} required/>
+    <form id="registerForm" className='bg-gray-200 rounded-lg m-4 p-4 text-center space-y-6' onSubmit={handleSubmit}>
+        <div className="space-x-2" >
+        <label htmlFor="name"  className='font-semibold'>Name</label>
+        <input type="text" placeholder="Enter name" name="name" id="name" onChange={handleChange} required/>
         </div>
-        <div className="form-group">
-        <label htmlFor="email">Email address</label>
-        <input className="input" type="email" placeholder="Enter email" name="email" id="email" onChange={handleChange} required/>
+        <div className="space-x-2" >
+        <label htmlFor="email" className='font-semibold'>Email address</label>
+        <input type="email" placeholder="Enter email" name="email" id="email" onChange={handleChange} required/>
         </div>
-        <div className="form-group">
-        <label htmlFor="password">Password</label>
-        <input className="input" type="password" placeholder="Password" name="password" id="password" onChange={handleChange} required/>
+        <div className="space-x-2">
+        <label htmlFor="password" className='font-semibold'>Password</label>
+        <input type="password" placeholder="Password" name="password" id="password" onChange={handleChange} required/>
         </div>
-        <div className="form-group">
-        <label htmlFor="role">Role</label>
+        <div className="space-x-2">
+        <label htmlFor="role" className='font-semibold'>Role</label>
         <select className="select" name="role" id="role" onChange={handleChange} required>
             <option value="">Select Role</option>
             <option value="nurse">Nurse</option>
             <option value="patient">Patient</option>
         </select>
         </div>
-        <button className="button" type="submit" >Register</button>
+        <button type="submit" className='bg-green-600 text-white px-6 py-2 rounded-lg hover:text-green-600 hover:bg-white
+            border-2 border-green-500 text-center' >Sign Up</button>
     </form>
     </div>
 

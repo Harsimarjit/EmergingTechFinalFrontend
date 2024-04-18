@@ -12,9 +12,9 @@ export const GET_NURSE_VITAL_SIGNS = gql`
     }
   }
 `;
-export const GET_PATIENT_INFO = gql`
-  query GetPatientInfo($userId: ID!) {
-    patientInfo(userId: $userId) {
+export const GET_DAILY_PATIENT_INFO = gql`
+  query GetDailyPatientInfo($userId: ID!) {
+    viewDailyPatientInfo(userId: $userId) {
       id
       pulseRate
       bloodPressure
