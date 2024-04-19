@@ -1,5 +1,22 @@
 import { gql } from '@apollo/client';
 
+export const GET_SYMPTOMS = gql`
+  query GetSymptoms($userId: ID!) {
+    viewSymptoms(userId: $userId) {
+      id
+      fever
+      cough
+      shortnessOfBreath
+      soreThroat
+      musclePain
+      lossOfTasteOrSmell
+      fatigue
+      diarrhea
+      nauseaOrVomiting
+      submittedAt
+    }
+  }
+`;
 export const GET_USER = gql`
   query GetUser($userId: ID!) {
     user(userId: $userId) {

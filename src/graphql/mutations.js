@@ -51,10 +51,18 @@ export const ADD_DAILY_PATIENT_INFO = gql`
 `;
 
 export const SUBMIT_SYMPTOMS = gql`
-  mutation SubmitSymptoms($userId: ID!, $symptoms: [String!]!) {
-    submitSymptoms(userId: $userId, symptoms: $symptoms) {
+  mutation SubmitSymptoms($userId: ID!, $fever: Boolean!, $cough: Boolean!, $shortnessOfBreath: Boolean!, $soreThroat: Boolean!, $musclePain: Boolean!, $lossOfTasteOrSmell: Boolean!, $fatigue: Boolean!, $diarrhea: Boolean!, $nauseaOrVomiting: Boolean!) {
+    submitSymptoms(userId: $userId, fever: $fever, cough: $cough, shortnessOfBreath: $shortnessOfBreath, soreThroat: $soreThroat, musclePain: $musclePain, lossOfTasteOrSmell: $lossOfTasteOrSmell, fatigue: $fatigue, diarrhea: $diarrhea, nauseaOrVomiting: $nauseaOrVomiting) {
       id
-      symptoms
+      fever
+      cough
+      shortnessOfBreath
+      soreThroat
+      musclePain
+      lossOfTasteOrSmell
+      fatigue
+      diarrhea
+      nauseaOrVomiting
       submittedAt
     }
   }

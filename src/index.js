@@ -15,6 +15,8 @@ import AddNurseVitalSigns from './components/addNurseVitalSigns';
 import ViewNurseVitalSigns from './components/viewNurseVitalSigns';
 import AddDailyPatientInfo from './components/AddDailyPatientInfo';
 import ViewDailyPatientInfo from './components/ViewDailyPatientInfo';
+import AddSymptoms from './components/AddSymptoms';
+import ViewSymptoms from './components/ViewSymptoms';
 
 const client = new ApolloClient(
   {
@@ -40,7 +42,8 @@ root.render(
           <Route path="/patient" element={<PatientPage />} />
           <Route path="/patient/add-daily-info" element={<AddDailyPatientInfo />} />
           <Route path="/patient/view-daily-info" element={<ViewDailyPatientInfo />} />
-          {/* <Route path="/patient/symptoms-checklist" element={<SymptomsChecklistPage />} /> */}
+          <Route path="/patient/add-symptoms" element={<AddSymptoms />} />
+          <Route path="/patient/view-symptoms" element={<ViewSymptoms />} />
         </Routes>
       </Router>
     </ApolloProvider>

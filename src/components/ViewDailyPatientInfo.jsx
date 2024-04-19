@@ -16,7 +16,10 @@ const ViewDailyPatientInfo = () => {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p className="bg-red-500 px-4 py-2 text-white" >Error: {error.message}</p>;
-
+  const formatSubmittedAt = (submittedAt) => {
+    const date = new Date(parseInt(submittedAt));
+    return date.toLocaleString();
+  };
   return (
     <div className="view-vital-container">
       <h2  className='bg-gray-800 px-4 py-6 flex justify-between'>
@@ -32,6 +35,7 @@ const ViewDailyPatientInfo = () => {
             <p>Weight: {item.weight}</p>
             <p>temperature: {item.temperature}</p>
             <p>Respiratory Rate: {item.respiratoryRate}</p>
+            <p className='font-semibold'>Submitted At:{formatSubmittedAt(item.createdAt)}</p>
           </li>
         ))}
       </ul>
