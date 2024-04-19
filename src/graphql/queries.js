@@ -1,9 +1,20 @@
 import { gql } from '@apollo/client';
 
+export const GET_USER = gql`
+  query GetUser($userId: ID!) {
+    user(userId: $userId) {
+      id
+      name
+      email
+      role
+    }
+  }
+`;
 export const GET_NURSE_VITAL_SIGNS = gql`
   query GetNurseVitalSigns($userId: ID!) {
     nurseVitalSigns(userId: $userId) {
       id
+      patientName
       bodyTemperature
       heartRate
       bloodPressure

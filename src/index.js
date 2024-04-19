@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignUp from './pages/SignUp';
+import Game from './pages/Game';
 import Login from './pages/Login';
 import NursePage from './pages/NursePage';
 import PatientPage from './pages/PatientPage';
@@ -29,6 +30,7 @@ root.render(
     <Router>
         <Routes>
           <Route path="/" element={<App />} />
+          <Route path="/game" element={<Game />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/nurse" element={<NursePage />} />

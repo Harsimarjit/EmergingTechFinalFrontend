@@ -4,6 +4,7 @@ import { LOGIN_USER } from '../graphql/mutations';
 
 const Login = () => {
     const [formData, setFormData] = useState({ email: '', password: '' });
+    const [addError, setAddError] = useState(null);
   
     const [loginUser] = useMutation(LOGIN_USER, {
       onCompleted: (data) => {
@@ -14,12 +15,14 @@ const Login = () => {
       },
       onError: (error) => {
         console.error('Error logging in:', error);
+        setAddError(error.message); 
       },
     });
   
     const handleChange = (e) => {
       const { name, value } = e.target;
       setFormData({ ...formData, [name]: value });
+      setAddError(null); 
     };
   
     const handleSubmit = (e) => {
@@ -30,15 +33,20 @@ const Login = () => {
     return (
       <div>
         <div className='bg-gray-800 text-3xl py-6 text-white text-center'>Login Page</div>
+        {
+          addError &&
+          <div className="bg-red-500 px-4 py-2 text-white" id="error">{addError}</div>
+        }
+    
         <div className='bg-gray-200 rounded-lg m-4 p-4 text-center'>
           <form id="loginForm" onSubmit={handleSubmit} className='space-y-6'>
             <div className='space-x-2'>
               <label htmlFor="email" className='font-semibold'>Email address</label>
-              <input type="email" placeholder="Enter email" name="email" id="email" value={formData.email} onChange={handleChange}/>
+              <input type="email" placeholder="Enter email" name="email" id="email" value={formData.email} onChange={handleChange} required/>
             </div>
             <div className='space-x-2'>
               <label htmlFor="password" className='font-semibold'>Password</label>
-              <input type="password" placeholder="Password" name="password" id="password" value={formData.password} onChange={handleChange}/>
+              <input type="password" placeholder="Password" name="password" id="password" value={formData.password} onChange={handleChange} required/>
             </div>
             <button type="submit" className='bg-green-600 text-white px-6 py-2 rounded-lg hover:text-green-600 hover:bg-white
             border-2 border-green-500'>Login</button>

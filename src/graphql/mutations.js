@@ -23,10 +23,11 @@ export const LOGIN_USER = gql`
   }
 `;
 export const ADD_NURSE_VITAL_SIGNS = gql`
-  mutation AddNurseVitalSigns($userId: ID!, $bodyTemperature: Float!, $heartRate: Int!, $bloodPressure: String!, $respiratoryRate: Int!) {
-    addNurseVitalSigns(userId: $userId, bodyTemperature: $bodyTemperature, heartRate: $heartRate, bloodPressure: $bloodPressure, respiratoryRate: $respiratoryRate) {
+  mutation AddNurseVitalSigns($userId: ID!, $patientName: String!, $bodyTemperature: Float!, $heartRate: Int!, $bloodPressure: String!, $respiratoryRate: Int!) {
+    addNurseVitalSigns(userId: $userId,patientName:$patientName, bodyTemperature: $bodyTemperature, heartRate: $heartRate, bloodPressure: $bloodPressure, respiratoryRate: $respiratoryRate) {
       id
       userId
+      patientName
       bodyTemperature
       heartRate
       bloodPressure

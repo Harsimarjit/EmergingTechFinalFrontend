@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_NURSE_VITAL_SIGNS } from '../graphql/mutations';
+import { Link } from 'react-router-dom';
+
 
 const AddNurseVitalSigns = () => {
 
   const userId = localStorage.getItem('userId');
 
   const [formData, setFormData] = useState({
+    patientName: '',
     bodyTemperature: '',
     heartRate: '',
     bloodPressure: '',
@@ -35,6 +38,7 @@ const AddNurseVitalSigns = () => {
       await addNurseVitalSigns({
         variables: {
           userId, 
+          patientName: formData.patientName,
           bodyTemperature: parseFloat(formData.bodyTemperature),
           heartRate: parseInt(formData.heartRate, 10),
           bloodPressure: formData.bloodPressure,
@@ -43,6 +47,7 @@ const AddNurseVitalSigns = () => {
       });
 
       setFormData({
+        patientName: '',
         bodyTemperature: '',
         heartRate: '',
         bloodPressure: '',
@@ -63,53 +68,34 @@ const AddNurseVitalSigns = () => {
 
   return (
     <div className="add-vital-container">
-      <h2>Add Vital Signs</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="bodyTemperature">Body Temperature:</label>
-          <input
-            type="number"
-            id="bodyTemperature"
-            name="bodyTemperature"
-            value={formData.bodyTemperature}
-            onChange={handleChange}
-            required
-          />
+      <h2  className='bg-gray-800 px-4 py-6 flex justify-between'>
+        <div className='text-3xl text-white'>Add Nurse Vital Signs</div>
+        <Link to="/nurse" className='bg-indigo-600 text-white px-4 py-2 rounded-lg hover:text-indigo-600 hover:bg-white
+            border-2 border-indigo-500 text-center' >Nurse Dashboard</Link>
+      </h2>
+      <form onSubmit={handleSubmit} className='bg-gray-200 rounded-lg m-4 p-4 text-center space-y-6'>
+        <div className="space-x-2">
+          <label className='font-semibold' htmlFor="patientName">Patient Name:</label>
+          <input type="string" id="patientName" name="patientName" value={formData.patientName} onChange={handleChange} required/>
         </div>
-        <div className="form-group">
-          <label htmlFor="heartRate">Heart Rate:</label>
-          <input
-            type="number"
-            id="heartRate"
-            name="heartRate"
-            value={formData.heartRate}
-            onChange={handleChange}
-            required
-          />
+        <div className="space-x-2">
+          <label className='font-semibold' htmlFor="bodyTemperature">Body Temperature:</label>
+          <input type="number" id="bodyTemperature" name="bodyTemperature" value={formData.bodyTemperature} onChange={handleChange} required/>
         </div>
-        <div className="form-group">
-          <label htmlFor="bloodPressure">Blood Pressure:</label>
-          <input
-            type="text"
-            id="bloodPressure"
-            name="bloodPressure"
-            value={formData.bloodPressure}
-            onChange={handleChange}
-            required
-          />
+        <div className="space-x-2">
+          <label className='font-semibold' htmlFor="heartRate">Heart Rate:</label>
+          <input type="number" id="heartRate" name="heartRate" value={formData.heartRate} onChange={handleChange} required/>
         </div>
-        <div className="form-group">
-          <label htmlFor="respiratoryRate">Respiratory Rate:</label>
-          <input
-            type="number"
-            id="respiratoryRate"
-            name="respiratoryRate"
-            value={formData.respiratoryRate}
-            onChange={handleChange}
-            required
-          />
+        <div className="space-x-2">
+          <label className='font-semibold' htmlFor="bloodPressure">Blood Pressure:</label>
+          <input type="text" id="bloodPressure" name="bloodPressure" value={formData.bloodPressure} onChange={handleChange} required/>
         </div>
-        <button type="submit">Submit</button>
+        <div className="space-x-2">
+          <label className='font-semibold' htmlFor="respiratoryRate">Respiratory Rate:</label>
+          <input type="number" id="respiratoryRate" name="respiratoryRate" value={formData.respiratoryRate} onChange={handleChange} required />
+        </div>
+        <button type="submit"  className='bg-green-600 text-white px-6 py-2 rounded-lg hover:text-green-600 hover:bg-white
+            border-2 border-green-500 text-center' >Submit</button>
         {error && <p>Error: {error.message}</p>}
       </form>
     </div>

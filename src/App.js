@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import {Link } from 'react-router-dom';
 
 
 function App() {
@@ -12,7 +12,11 @@ function App() {
             <Link to="/signup" className="bg-gray-800 rounded-lg px-6 py-4 text-white">Sign Up</Link>
           </div>
         </nav>
-        <p className='bg-gray-200 rounded-lg m-2 p-4 h-64'>Welcome to the nurse and patient monitoring app.</p>
+        <div className='bg-gray-200 rounded-lg m-2 p-4 h-64'>Welcome to the nurse and patient monitoring app.</div>
+        <div className=' mx-4 my-12 text-center'>
+          <Link to="/game" className=" bg-gradient-to-r from-rose-500 via-red-500 to-orange-500 
+           rounded-lg px-16 py-8 text-white w-full">Lets Play a Game!</Link>
+        </div>
 
       </div>
   );

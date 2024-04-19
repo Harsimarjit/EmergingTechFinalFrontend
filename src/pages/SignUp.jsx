@@ -6,7 +6,6 @@ const SignUp = () => {
 
     const [formData, setFormData] = useState({ name: '',email: '', password: '', role: '' });
     const [addError, setAddError] = useState(null);
-
     
     const [addUser] = useMutation(ADD_USER, {
         onError: (error) => {
@@ -49,7 +48,11 @@ const SignUp = () => {
   return (
     <div>
     <h1 className='bg-gray-800 text-3xl py-6 text-white text-center'>Sign Up</h1>
-    <div className="error" id="error"></div>
+    {
+      addError &&
+      <div className="bg-red-500 px-4 py-2 text-white" id="error">{addError}</div>
+    }
+    
     <form id="registerForm" className='bg-gray-200 rounded-lg m-4 p-4 text-center space-y-6' onSubmit={handleSubmit}>
         <div className="space-x-2" >
         <label htmlFor="name"  className='font-semibold'>Name</label>
